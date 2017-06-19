@@ -1,5 +1,9 @@
 package com.hoanghiep.webtravel.model;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -17,12 +21,17 @@ public class User implements Serializable {
     private int id;
 
     @Column(name = "email", nullable = false, unique = true)
-    private String email;
+    private  String email;
 
     @Column(name = "password", nullable = false)
     private String password;
+
     @ManyToMany
-    @JoinTable(name = "role", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "roleId"))
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(name = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "roleId")
+    )
     private Set<Role> roles;
 
     public int getId() {
