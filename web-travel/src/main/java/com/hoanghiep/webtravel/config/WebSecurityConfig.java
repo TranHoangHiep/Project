@@ -37,13 +37,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").hasAnyRole("MEMBER")
                 .antMatchers("/admin").hasAnyRole("ADMIN").and()
                 .formLogin()
-                .loginPage("/login")
-                .usernameParameter("username")
+            .loginPage("/login")
+                .usernameParameter("email")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/")
                 .failureUrl("/login?error")
                 .and()
-                .exceptionHandling()
+            .exceptionHandling()
                 .accessDeniedPage("/403");
     }
 }
