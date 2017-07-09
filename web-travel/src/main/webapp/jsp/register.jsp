@@ -5,7 +5,7 @@
   Time: 13:30
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" pageEncoding="utf-8" language="java" %>
 <html>
 <head>
     <title>${title}</title>
@@ -38,11 +38,7 @@
     <div class="register-box-body">
         <p class="login-box-msg">Register a new membership</p>
 
-        <form action="../../index.html" method="post">
-            <div class="form-group has-feedback">
-                <input type="text" class="form-control" placeholder="Full name">
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            </div>
+        <form action="/sign-up" method="post">
             <div class="form-group has-feedback">
                 <input type="email" class="form-control" placeholder="Email">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -100,5 +96,6 @@
         });
     });
 </script>
+<script src="${resources}"></script>
 </body>
 </html>

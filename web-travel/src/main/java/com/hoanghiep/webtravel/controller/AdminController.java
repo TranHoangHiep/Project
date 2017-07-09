@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AdminController {
 
-//    @RequestMapping("/login")
     @GetMapping("/login")
     public ModelAndView login(){
         ModelAndView mav = new ModelAndView("login");
@@ -19,10 +18,11 @@ public class AdminController {
         return mav;
     }
 
-    @RequestMapping("/register")
+    @GetMapping(value = "/register", produces = "text/plain;charset=UTF-8")
     public ModelAndView register(){
         ModelAndView mav = new ModelAndView("register");
         mav.addObject("title", "Đăng ký - Quản trị");
+        mav.addObject("resources", "/js/signup.js");
         return mav;
     }
 
