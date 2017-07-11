@@ -36,8 +36,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/login").permitAll()
+                .antMatchers("/js/**").permitAll()
+                .antMatchers("/img/**").permitAll()
+                .antMatchers("/bootstrap/**").permitAll()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/plugins/**").permitAll()
                 .antMatchers("/").hasAnyRole("MEMBER")
-                .antMatchers("/admin").hasAnyRole("ADMIN").and()
+                .antMatchers("/admin").hasAnyRole("ADMIN")
+                .anyRequest().authenticated().and()
                 .formLogin()
             .loginPage("/login")
                 .usernameParameter("email")
@@ -47,6 +53,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error")
                 .and()
             .exceptionHandling()
-                .accessDeniedPage("/403");
+                .accessDeniedPage("/403").and()
+            .logout()
+                .logoutSuccessUrl("/login");
     }
 }
