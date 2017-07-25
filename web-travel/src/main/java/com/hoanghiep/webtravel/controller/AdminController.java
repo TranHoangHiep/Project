@@ -1,5 +1,8 @@
 package com.hoanghiep.webtravel.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,8 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AdminController {
 
+    Logger logger = LoggerFactory.getLogger(AdminController.class);
+
     @GetMapping("/login")
-    public ModelAndView login(){
+    public ModelAndView login(Authentication auth){
+        logger.info("auth name: {}", auth.getPrincipal());
+
         ModelAndView mav = new ModelAndView("login");
         mav.addObject("title", "Login - Admin");
         return mav;
